@@ -11,6 +11,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Lista de productos - Salmonex</title>
+           <script type="text/javascript" >
+           function eliminar(int) {
+               var resultado = confirm("¿Estas seguro de que quieres elminar este ingreso?");
+               var cod = int;
+               console.log(cod);
+               if (resultado === true) {
+                   window.location.href= "eliminar.do?cod="+cod+"";
+                }else{
+            }}
+        
+            </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
             body{
@@ -19,15 +31,6 @@
             }
             div{
                 margin: auto;
-            }
-            td{
-               box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-               border: 3px solid green;padding: 10px;
-               
-            }
-            th{
-                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-                padding: 20px;
             }
         </style>
     </head>
@@ -40,8 +43,8 @@
                     <h2>LISTADO DE PRODUCTOS</h2>
             </div>
         <div class="row" style="margin:0px">
-                <div class="col s8" style="margin:0px"style="border: 3px solid green;">
-                    <table class="bordered highlight">
+                <div class="col s8" style="margin:0px">
+                    <table class="bordered highlight" border= "1">
                         <thead>
                             <tr>
                                 <th>CODIGO</th>
@@ -63,7 +66,7 @@
                                         out.println("<td>"+p.getPrecio()+"</td>");
                                         out.println("<td>"+p.getNombre_mercado()+"</td>");
                                         out.println("<td>"+p.getNombre_formato()+"</td>");
-                                        out.println("<td><a href='eliminar.do?cod="+p.getCod_salmon()+"'>Eliminar registro</a></td>");
+                                        out.println("<td><button onClick = 'javascript:eliminar("+p.getCod_salmon()+");return false'>Eliminar registro</button></td>");
                                     out.println("</tr>");
                                 }
                             %>
@@ -71,6 +74,7 @@
                     </table>
               
         <h4><a href="index.html">Volver Al Index</a></h4>
+     
         <%
              if(request.getParameter("ok") != null){
               String ok = request.getParameter("ok");
